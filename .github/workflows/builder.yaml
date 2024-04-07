@@ -30,7 +30,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '21'
 
       - uses: actions/setup-go@v4
         with:
@@ -44,7 +44,8 @@ jobs:
 
       - name: Build Site
         run: |
-          make build
+          npm install
+          gulp dist 
           rm -f ./dist/codelabs
-          cp -r ./codelabs ./dist/ 
+          cp -r ./codelabs ./dist/
         working-directory: ./site
